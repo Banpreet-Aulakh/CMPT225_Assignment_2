@@ -92,7 +92,7 @@ int main() {
 }
 //Desc:  Function that used a try-catch block to catch any errors done using the operation helper and pushes the results onto the number stack
 //PRE:   The input is well formed (The input is in proper infix form)
-//POST:  Calls operation helper and assigns result of operation to t and pushes it onto the number stack.
+//POST:  Calls operation helper and assigns result of operation to t and pushes it onto the number stack. Throws error if detecting improper infix form or 0 division.
 void doOperation(Stack<Token>& numstack, Stack<Token>& opstack, Token& t, int nums, int ops) {
    if (nums != (ops + 1)) {
       throw logic_error("Invalid input");
@@ -109,7 +109,7 @@ void doOperation(Stack<Token>& numstack, Stack<Token>& opstack, Token& t, int nu
 
 //Desc:  Helper function that takes performs the various integer arithmetic operations using the 2 stacks in the infix algorithm
 //PRE:   The input is well formed (The input is in proper infix form)
-//POST:  Performs operations on 2 numbers from the stack and returns the result while removing the numbers already used.
+//POST:  Performs operations on 2 numbers from the stack and returns the result while removing the numbers already used. Throws error for 0 division.
 int operationHelper(Stack<Token>& numstack, Stack<Token>& opstack) {
    int num1 = numstack.pop().val;
    int num2 = numstack.pop().val;
